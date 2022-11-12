@@ -1,0 +1,46 @@
+doctype html 
+html 
+    head
+        link(rel="stylesheet", href="../css/style.css")
+        title My Pastery 
+           
+            
+    body 
+        .header 
+            img(src='../media/logo.png' alt='logo' class='site-logo')
+        .container 
+           
+            nav
+                ul
+                    li
+                        a(href='/') Home page
+                    li
+                        a(href='#yeast-cakes') Yeast cakes
+                    li
+                        a(href='#cookies') Cookies
+                    li
+                        a(href='#cakes') Cakes
+                    li
+                        a(href='#challah-breads') challah and breads
+                    li
+                        a(href='http://localhost:3000/about') About as Contact Us
+            .content            
+                block content 
+                
+            .small-container-cart-page
+                h1 Your cart
+                table(id='shopping-cart')
+                    tr
+                        th Product
+                        th Quantity
+                        th Subtotal
+                        
+                #total-price.subtotal
+
+    script.
+        let items = !{items}
+        let shoppingCart = !{cart}
+        let showBuyNow = !{showBuyNow}
+
+    block scripts
+        script(type="text/javascript" src='./js/script.js' defer)

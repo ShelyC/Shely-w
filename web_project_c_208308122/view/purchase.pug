@@ -1,0 +1,33 @@
+extends layout 
+
+block content
+  .purchase-form
+    #loader.loader-container
+      span.loader
+    h1.headline Please complete your order
+    form#form1(action='purchase-details' , method="post")
+      label(for='firstName') First Name :   
+      input#firstName(form='form1' required='' type='text' name='firstName' value='' min='2')
+      br
+      label(for='lastName') Last Name :    
+      input#lastName(form='form1' required='' type='text' name='lastName' value='' min='2')
+      br
+      label(for='email') Email :            
+      input#email(type='email' required='' name='email' value='')
+      br
+      input(type='radio' id='delivery' name='takeAway' onchange='showPositionTracker(true)' value=0)
+      label(for='delivery') Delivery
+      input(type='radio' id='takeAway' name='takeAway' onchange='showPositionTracker(false)' value=1 checked)
+      label(for='takeAway') Take Away
+      button#location-btn(hidden='' onclick=' return getLocation()') Find you&apos;r location
+      p#p
+      label(for='Address') Address :         
+      input#address(type='text' required name="address")
+      p *Payment is made in cash
+      label(for='comment') If you have any comment, please write it here
+      br
+      textarea#comment(name='comment' cols='30' rows='5')
+      br
+      input(type='submit' value='Approve')
+      
+      script(type="text/javascript" src='./js/purchase.js' defer)

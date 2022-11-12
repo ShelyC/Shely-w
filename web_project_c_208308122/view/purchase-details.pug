@@ -1,0 +1,27 @@
+extends layout 
+
+block content
+  .purchase-form
+    h1.headline Order details
+    P Date: #{orderEntry.orderDT}
+    p First Name: #{orderEntry.firstName}
+    p Last Name: #{orderEntry.lastName}
+    p Email: #{orderEntry.mail}
+    p Address: #{orderEntry.address}
+    p Take Away: #{orderEntry.tA}
+    p *Payment is made in cash
+    p Comments: #{orderEntry.comments}
+    p For any change please contact as
+
+    h1 Your items
+    table
+      tr
+          th name
+          th quantity
+
+      each item in cartItems
+          tr
+          td= item.name
+          td= item.quantity 
+ 
+    p Total price: #{orderEntry.totalPrice}&#x20AA;

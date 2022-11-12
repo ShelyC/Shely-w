@@ -1,0 +1,239 @@
+drop table `cart`;
+drop table `details`;
+drop table `orders`;
+drop table `items`;
+
+
+CREATE TABLE IF NOT EXISTS `items` (
+id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name varchar(255) NOT NULL,
+image varchar(255) NOT NULL,
+category varchar(255),
+price double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE IF NOT EXISTS `orders` (
+orderID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+mail varchar(255) NOT NULL,
+firstName varchar(255) NOT NULL,
+lastName varchar(255) NOT NULL,
+address varchar(255) NOT NULL,
+orderDT datetime NOT NULL,
+tA bool,
+comments varchar(5000),
+totalPrice real NOT NULL)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE IF NOT EXISTS `details` (
+itemId integer NOT NULL,
+orderID integer NOT NULL,
+quantity integer NOT NULL,
+price double NOT NULL,
+PRIMARY KEY (itemId, orderID),
+CONSTRAINT FOREIGN KEY (itemId) REFERENCES `items` (id),
+CONSTRAINT FOREIGN KEY (orderID) REFERENCES `orders` (orderID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `cart` (
+id integer 	NOT NULL AUTO_INCREMENT,
+itemId integer NOT NULL,
+name varchar(255) NOT NULL,
+image varchar(255) NOT NULL,
+category varchar(255),
+price double NOT NULL,
+quantity integer NOT NULL,
+PRIMARY 	KEY 	(id),
+CONSTRAINT FOREIGN KEY (itemId) REFERENCES `items` (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+INSERT INTO `items` (
+	image ,
+	name ,
+	price ,
+	Category 
+	 )
+VALUES
+	(
+	"./media/chalah/chalah.jpeg",
+    "1 Challah for Shabbat",
+  	25,
+    'recomended'
+	),
+
+	(
+	"./media/cookies/alphahores.jpeg",
+	"Alfahors hearts-5 units",
+	30,
+	'recomended'
+	),
+
+	(
+ 	"./media/misc/coco_fadg.jpeg",
+    "1 White chocolate fudge with pistachio",
+    30,
+    'recomended'	
+	),
+
+	(
+	"./media/cakes/apple_pai.jpeg",
+    "Chocolate and pistachio yeast cake",
+    55,
+    'yeast'
+	),
+
+	(
+	"./media/yeast/yeast_cheese.jpeg",
+    "Cheese yeast cake",
+    55,
+    'yeast'
+	),
+    
+	(
+	"./media/yeast/rogalah_cake.jpeg",
+    "Roglach cake (chocolate, pistachio, hazelnut spread)",
+    45,
+    'yeast'
+	), 
+
+	(
+	"./media/cookies/alphahores.jpeg",
+    "Alfahors hearts-5 units",
+    30,
+    'cookies'	
+	),
+  
+	(
+	"./media/cookies/healthy_cookies.jpeg",
+    "Oatmeal cookies and chocolate chips-5 units",
+    30,
+    'cookies'
+	),
+   
+    (
+	"./media/cookies/maamul.jpeg",
+    "Ma'amul with a spread of dates and nuts-5 units",
+    35,
+    'cookies'
+	),
+    
+	(
+	"./media/cakes/lotus_cheese_cake.jpeg",
+    "Baked lotus cheese cake",
+    250,
+    'cakes'
+	),
+    
+	
+	(
+	"./media/cakes/cheese_cake.jpeg",
+    "Cheesecake with crumbles",
+    150,
+    'cakes'
+	),
+    
+	(
+	"./media/cakes/apple_pai.jpeg",
+    "Apple pie",
+    170,
+    'cakes'
+	),
+   
+   (
+	"./media/chalah/chalah.jpeg",
+    "1 Challah for Shabbat",
+    25,
+    'bread'
+   ),
+   
+   (
+	"./media/chalah/cosemet_bread.jpg",
+    "Buckwheat bread and seeds",
+    35,
+    'bread'
+   ),
+    
+	(
+	"./media/chalah/buns.jpg",
+   	"Challah rolls-5 units",
+    35,
+    'bread'
+	);
+
+
+INSERT INTO `orders` (
+	mail ,
+	firstName ,
+	lastName ,
+	address ,
+	orderDT ,
+	tA ,
+	comments ,
+	totalPrice
+	 )
+VALUES
+	(
+	"shelly544@gmail.com",
+	"Shley",
+	"Cohen",
+	"hacfir77, jeruusalem",
+	"2022-10-09",
+	1,
+	"",
+	50
+	),
+	(
+	"maayam@walla.co.il",
+	"Maayan",
+	"Shalom",
+	"Mevaseret, Hashlom 8",
+	"2022-10-09",
+	0,
+	"For birthday gift",
+	30
+	),
+	(
+	"batia@yahoo.com",
+	"Bat-el",
+	"Vizel",
+	"haloah haayvri 39",
+	"2022-10-09",
+	1,
+	"thank you",
+	220
+	);
+
+INSERT INTO `details` (
+	itemId,
+	orderID ,
+	quantity,
+	price
+	 )
+VALUES
+	(
+	1,
+	1,
+	2,
+	50
+	),
+	(
+	2,
+	2,
+	1,
+	30
+	),
+	(
+	4,
+	3,
+	3,
+	220
+	);
+	
+
+
